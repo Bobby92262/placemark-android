@@ -11,9 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Placemark">
-
         <activity
             android:name=".AddEditActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MarkListActivity"
             android:exported="false" />
 
         <activity
@@ -27,8 +30,6 @@
 
         </activity>
 
-</application>
-
-
+    </application>
 
 </manifest>
