@@ -7,7 +7,7 @@
     <LinearLayout
         android:id="@+id/innerScrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="32dp">
@@ -16,8 +16,9 @@
             android:id="@+id/formTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:padding="20dp"
+            android:layout_margin="5dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="10dp"
             android:text="Add Mark"
             android:textSize="28sp"
             android:textStyle="bold" />
@@ -25,42 +26,59 @@
         <EditText
             android:id="@+id/titleInput"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_height="48dp"
+            android:layout_margin="5dp"
             android:hint="Title"
-            android:padding="16dp" />
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp" />
 
         <EditText
             android:id="@+id/descriptionInput"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_height="48dp"
+            android:layout_margin="5dp"
             android:hint="Description"
             android:minLines="3"
-            android:padding="16dp" />
+            android:paddingTop="5dp"
+            android:paddingEnd="5dp" />
+
+        <ImageView
+            android:id="@+id/imagePicker"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
+
+        <Button
+            android:id="@+id/imageButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
 
         <EditText
             android:id="@+id/xInput"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="48dp"
             android:layout_margin="10dp"
             android:hint="X Coordinate"
             android:inputType="number|numberDecimal"
-            android:padding="16dp" />
+            android:paddingTop="5dp"
+            android:paddingEnd="5dp" />
 
         <EditText
             android:id="@+id/yInput"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_margin="10dp"
             android:hint="Y Coordinate"
-            android:padding="16dp" />
+            android:paddingTop="5dp"
+            android:paddingEnd="5dp" />
 
         <Button
             android:id="@+id/saveButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
+            android:layout_margin="16dp"
             android:text="Save"
             android:textSize="20sp" />
 
@@ -68,7 +86,7 @@
             android:id="@+id/cancelButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
+            android:layout_margin="16dp"
             android:text="Cancel"
             android:textSize="20sp" />
 

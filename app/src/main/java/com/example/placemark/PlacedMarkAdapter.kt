@@ -1,18 +1,20 @@
 package com.example.placemark
 
 
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.placemark.models.PlacemarkModel
+import com.example.placemark.models.PlacedMarkersData
 
 class PlacedMarkAdapter(
-    private var marks: List<PlacemarkModel>,
-    private val onEdit: (PlacemarkModel) -> Unit,
-    private val onDelete: (PlacemarkModel) -> Unit
+    private var marks: List<PlacedMarkersData>,
+    private val onEdit: (PlacedMarkersData) -> Unit,
+    private val onDelete: (PlacedMarkersData) -> Unit
 ) : RecyclerView.Adapter<PlacedMarkAdapter.MarkViewHolder>() {
 
     class MarkViewHolder(itemView: View) :
@@ -23,6 +25,9 @@ class PlacedMarkAdapter(
 
         val descriptionText: TextView =
             itemView.findViewById(R.id.descriptionText)
+
+        val markImage : ImageView =
+            itemView.findViewById(R.id.markImage)
 
         val coordinatesText: TextView =
             itemView.findViewById(R.id.coordinatesText)
@@ -60,7 +65,17 @@ class PlacedMarkAdapter(
             "${mark.id}: ${mark.title}"
 
         holder.descriptionText.text =
-            mark.description
+            mark.desc
+
+        val imageUri = mark.imageUri
+
+        if (imageUri != null) {
+            holder.markImage.setImageURI(Uri.parse(imageUri))
+        } else {
+            holder.markImage.setImageResource(
+                android.R.drawable.ic_menu_gallery
+            )
+        }
 
         holder.coordinatesText.text =
             "X: ${mark.x}, Y: ${mark.y}"
@@ -78,7 +93,7 @@ class PlacedMarkAdapter(
         return marks.size
     }
 
-    fun updateMarks(newMarks: List<PlacemarkModel>) {
+    fun updateMarks(newMarks: List<PlacedMarkersData>) {
         marks = newMarks
         notifyDataSetChanged()
     }
