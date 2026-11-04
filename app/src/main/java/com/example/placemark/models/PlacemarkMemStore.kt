@@ -3,31 +3,36 @@ import java.util.concurrent.atomic.AtomicLong
 
 class PlacemarkMemStore {
 
-    private var placemarks = ArrayList<PlacemarkModel>()
+    private var placemarks = ArrayList<PlacedMarkersData>()
     private var lastId = AtomicLong(0L)
 
-    fun findAll(): List<PlacemarkModel> {
+    fun findAll(): List<PlacedMarkersData> {
         return placemarks
     }
 
-    fun create(placemark: PlacemarkModel) {
-        placemark.id = lastId.incrementAndGet() // Assign a unique ID to the placemark by increment by 1 from the lastId
+    fun create(placemark: PlacedMarkersData) {
+        placemark.validate()
+        placemark.id = lastId.incrementAndGet()
         placemarks.add(placemark)
     }
 
-    fun update(placemark: PlacemarkModel): Boolean {
+
+    fun update(placemark: PlacedMarkersData): Boolean {
+        placemark.validate()
+
         val foundPlacemark = findOne(placemark.id)
         return if (foundPlacemark != null) {
-            foundPlacemark.id = placemark.id
             foundPlacemark.title = placemark.title
-            foundPlacemark.description = placemark.description
+            foundPlacemark.desc = placemark.desc
             foundPlacemark.x = placemark.x
             foundPlacemark.y = placemark.y
+            foundPlacemark.imageUri = placemark.imageUri
             true
         } else {
             false
         }
     }
+
 
     fun delete(id: Long): Boolean {
         val foundPlacemark = findOne(id)
@@ -39,7 +44,7 @@ class PlacemarkMemStore {
         }
     }
 
-    fun findOne(id: Long): PlacemarkModel? {
+    fun findOne(id: Long): PlacedMarkersData? {
         return placemarks.find { p -> p.id == id }
     }
 }

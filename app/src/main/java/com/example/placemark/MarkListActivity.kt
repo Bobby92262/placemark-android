@@ -7,7 +7,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.placemark.models.PlacemarkModel
+import com.example.placemark.models.PlacedMarkersData
 
 class MarkListActivity : AppCompatActivity() {
 
@@ -61,7 +61,7 @@ class MarkListActivity : AppCompatActivity() {
         }
     }
 
-    private fun editMark(mark: PlacemarkModel) {
+    private fun editMark(mark: PlacedMarkersData) {
 
         val intent =
             Intent(this, AddEditActivity::class.java)
@@ -71,7 +71,7 @@ class MarkListActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun deleteMark(mark: PlacemarkModel) {
+    private fun deleteMark(mark: PlacedMarkersData) {
 
         AppData.placedMarks.delete(mark.id)
 
