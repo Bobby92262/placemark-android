@@ -89,7 +89,7 @@ class AddEditActivity : AppCompatActivity() {
                 }
             }
 
-        findViewById<Button>(R.id.OSM_map_button).setOnClickListener {
+        findViewById<Button>(R.id.OSMbutton).setOnClickListener {
             val intent = Intent(this, MapPickerActivity::class.java)
             mapPicker.launch(intent)
         }
