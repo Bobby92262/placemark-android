@@ -45,21 +45,22 @@
         <ImageView
             android:id="@+id/imagePicker"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="138dp"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/ic_launcher_foreground" />
 
         <Button
-            android:id="@+id/imageButton"
+            android:id="@+id/ImagePickButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="6dp"
             android:text="Button" />
 
         <EditText
             android:id="@+id/xInput"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_margin="10dp"
+            android:layout_margin="6dp"
             android:hint="X Coordinate"
             android:inputType="number|numberDecimal"
             android:paddingTop="5dp"
@@ -69,16 +70,23 @@
             android:id="@+id/yInput"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_margin="10dp"
+            android:layout_margin="6dp"
             android:hint="Y Coordinate"
             android:paddingTop="5dp"
             android:paddingEnd="5dp" />
 
         <Button
+            android:id="@+id/OSMbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:text="Map Picker" />
+
+        <Button
             android:id="@+id/saveButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="16dp"
+            android:layout_margin="6dp"
             android:text="Save"
             android:textSize="20sp" />
 
@@ -86,7 +94,7 @@
             android:id="@+id/cancelButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="16dp"
+            android:layout_margin="6dp"
             android:text="Cancel"
             android:textSize="20sp" />
 

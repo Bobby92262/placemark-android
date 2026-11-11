@@ -1,6 +1,8 @@
 package com.example.placemark
 
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -11,6 +13,7 @@ import com.example.placemark.models.PlacedMarkersData
 import android.net.Uri
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
+import kotlin.jvm.java
 
 
 class AddEditActivity : AppCompatActivity() {
@@ -47,6 +50,7 @@ class AddEditActivity : AppCompatActivity() {
 
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -66,13 +70,37 @@ class AddEditActivity : AppCompatActivity() {
         yInput =
             findViewById(R.id.yInput)
 
+        val mapPicker =
+            registerForActivityResult(
+                ActivityResultContracts.StartActivityForResult()
+            ) { result ->
+                if (result.resultCode == RESULT_OK) {
+                    val data = result.data ?: return@registerForActivityResult
+                    val selectedLatitude = data.getDoubleExtra("latitude", 0.0)
+                    val selectedLongitude = data.getDoubleExtra("longitude", 0.0)
+
+                    selectedLatitude?.let {
+                        xInput.setText(it.toString())
+                    }
+
+                    selectedLongitude?.let {
+                        yInput.setText(it.toString())
+                    }
+                }
+            }
+
+        findViewById<Button>(R.id.OSM_map_button).setOnClickListener {
+            val intent = Intent(this, MapPickerActivity::class.java)
+            mapPicker.launch(intent)
+        }
+
         val saveButton =
             findViewById<Button>(R.id.saveButton)
 
         val cancelButton =
             findViewById<Button>(R.id.cancelButton)
 
-        findViewById<Button>(R.id.imageButton).setOnClickListener {
+        findViewById<Button>(R.id.ImagePickButton).setOnClickListener {
             imagePicker.launch(arrayOf("image/*"))
         }
 
@@ -168,6 +196,11 @@ class AddEditActivity : AppCompatActivity() {
             yInput.error = "Longitude must be between -180 and 180"
             return
         }
+
+
+
+
+
 
         try {
             if (editingId == null) {
