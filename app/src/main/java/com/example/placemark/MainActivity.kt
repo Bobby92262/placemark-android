@@ -36,5 +36,6 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+        AppData.initialize(this)
     }
 }
