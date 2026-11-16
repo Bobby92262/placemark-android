@@ -42,7 +42,8 @@ class PlacemarkMemStore (private val file: File) {
 
 
     fun findAll(): List<PlacedMarkersData> {
-        return placemarks
+        //Fresh snapshot
+        return placemarks.toList()
     }
 
     fun findOne(id: Long): PlacedMarkersData? {
