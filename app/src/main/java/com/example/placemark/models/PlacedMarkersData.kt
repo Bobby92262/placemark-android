@@ -1,5 +1,7 @@
 package com.example.placemark.models
 
+import kotlin.concurrent.atomics.AtomicLong
+
 /**
  * Data class representing a single Placemark item.
  * Kotlin automatically generates toString(), equals(), hashCode(), and copy().

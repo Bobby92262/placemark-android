@@ -42,5 +42,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
     implementation("org.osmdroid:osmdroid-android:6.1.20")
+    implementation("com.google.code.gson:gson:2.13.2")
+
 
 }
